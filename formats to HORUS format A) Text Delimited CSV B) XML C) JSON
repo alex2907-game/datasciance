@@ -1,0 +1,25 @@
+# main code 
+import pandas as pd
+from google.colab import files
+files.upload()
+
+#csv
+data=pd.read_csv("student_data.csv")
+new=data[["student","age"]]
+new.columns=["studentname","studentage"]
+print("csv to horus")
+print(new)
+
+#xml
+data=pd.read_xml("student_data.xml")
+new=data[["student","age"]]
+new.columns=["studentname","studentage"]
+print("xml to horus")
+print(new)
+
+#json
+data=pd.read_json("student_data.json")
+new=data[["student","age"]]
+new.columns=["studentname","studentage"]
+print("json to horus")
+print(new)

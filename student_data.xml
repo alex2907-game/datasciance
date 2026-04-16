@@ -1,0 +1,17 @@
+<data>
+   <row>
+       <student>srushti</student>
+       <age>22</age>
+       <city>mumbai</city>
+   </row>
+   <row>
+       <student>duggu</student>
+       <age>21</age>
+       <city>vashi</city>
+   </row>
+   <row>
+       <student>coco</student>
+       <age>20</age>
+       <city>cbd</city>
+   </row>
+</data>

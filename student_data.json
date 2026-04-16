@@ -1,0 +1,17 @@
+[
+  {
+    "student": "srushti",
+    "age": 22,
+    "city": "mumbai"
+  },
+  {
+    "student": "duggu",
+    "age": 21,
+    "city": "vashi"
+  },
+  {
+    "student": "coco",
+    "age": 20,
+    "city": "cbd"
+  }
+]

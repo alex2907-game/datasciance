@@ -1,0 +1,54 @@
+small code:
+# Create simple data with 3 clear groups
+data <- data.frame(
+  x = c(rnorm(20, 2), rnorm(20, 10), rnorm(20, 5)),
+  y = c(rnorm(20, 2), rnorm(20, 10), rnorm(20, 5))
+)
+
+# Apply k-means clustering (3 groups)
+k <- kmeans(data, 3)
+
+# Plot the clustered data
+plot(data$x, data$y, col=c("red","blue","green"), pch=16)
+
+# Add cluster centers (star shape)
+points(k$centers, pch=8, cex=2)
+
+big code:
+# Step 1: Load Required Library
+library(ggplot2)
+
+# Step 2: Generate Sample Data with Clear Clusters
+set.seed(123)
+
+cluster1 <- data.frame(
+  X = rnorm(20, mean = 5, sd = 0.8),
+  Y = rnorm(20, mean = 5, sd = 0.8)
+)
+
+cluster2 <- data.frame(
+  X = rnorm(20, mean = 15, sd = 0.8),
+  Y = rnorm(20, mean = 15, sd = 0.8)
+)
+
+cluster3 <- data.frame(
+  X = rnorm(20, mean = 25, sd = 0.8),
+  Y = rnorm(20, mean = 5, sd = 0.8)
+)
+
+data <- rbind(cluster1, cluster2, cluster3)
+
+# Step 3: Apply K-Means Clustering
+kmeans_result <- kmeans(data, centers = 3)
+
+# Step 4: Add Cluster Labels to Data
+data$Cluster <- as.factor(kmeans_result$cluster)
+
+# Step 5: Plot the Clusters
+ggplot(data, aes(x = X, y = Y, color = Cluster)) +
+  geom_point(size = 3) +
+  labs(title = "K-Means Clustering with Generated Dataset",
+       x = "Feature X",
+       y = "Feature Y") +
+  theme_minimal()
+

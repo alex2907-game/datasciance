@@ -20,3 +20,34 @@ plot(result$x[,1], result$x[,2],
      main = "PCA Graph",
      xlab = "PC1",
      ylab = "PC2")
+
+big code:
+#  Load Required Libraries
+library(ggplot2)
+
+# Create Sample Data (4 features)
+data <- data.frame(
+  Feature1 = c(2, 6, 5, 7, 4),
+  Feature2 = c(8, 3, 4, 5, 6),
+  Feature3 = c(4, 8, 6, 7, 5),
+  Feature4 = c(10, 9, 8, 11, 7)
+)
+
+# Standardize the Data
+data_scaled <- scale(data)  # Standardization
+
+# Apply PCA
+pca_result <- prcomp(data_scaled, center = TRUE, scale. = TRUE)
+
+# Print PCA Summary
+print(summary(pca_result))  # Show importance of components
+print(pca_result$rotation)  # Show principal components
+
+# Create Data Frame for PCA Components
+pca_data <- as.data.frame(pca_result$x)
+
+# Plot PCA Components
+ggplot(pca_data, aes(x = PC1, y = PC2)) +
+  geom_point(color = "blue", size = 3) +
+  labs(title = "PCA Visualization", x = "Principal Component 1", y = "Principal Component 2") +
+  theme_minimal()

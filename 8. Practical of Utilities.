@@ -1,0 +1,62 @@
+#1 Removing leading or lagging spaces from a data entry
+import string
+import datetime as dt
+print ('#1 Removing leading or lagging spaces from a data entry');
+baddata="Data Science with too many spaces is bad!!!"
+print('>',baddata,'<')
+cleandata=baddata.strip()
+print('>',cleandata,'<')
+
+
+#2 Removing nonprintable characters from a data entry
+import string
+import datetime as dt
+print('#2 Removing nonprintable characters from a data entry')
+printable = set(string.printable)
+baddata = "Data\x00Science with\x02 funny characters is \x10bad!!!"
+cleandata = "".join(filter(lambda x: x in printable, baddata))
+print('Bad Data :', baddata)
+print('Clean Data:', cleandata)
+
+
+# 3 Reformatting data entry to match specific formatting criteria
+import string
+import datetime as dt
+print('# 3 Reformatting data entry to match specific formatting criteria.')
+baddate = dt.date(2026, 4, 17)
+baddata=format(baddate,'%Y-%m-%d')
+gooddate = dt.datetime.strptime(baddata,'%Y-%m-%d')
+gooddata=format(gooddate,'%d %B %Y')
+print('Bad Data : ',baddata)
+print('Good Data : ',gooddata)
+
+
+#A. Data Binning or Bucketing
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+np.random.seed(0)
+
+mu = 90
+sigma = 25
+x = mu + sigma * np.random.randn(5000)
+
+num_bins = 25
+
+fig, ax = plt.subplots()
+
+n, bins, patches = ax.hist(x, num_bins, density=1, alpha=0.6, color='g')
+
+y = stats.norm.pdf(bins, mu, sigma)
+ax.plot(bins, y, '--', color='r', label='Fit: N(90, 25)')
+
+ax.set_xlabel('Example Data')
+ax.set_ylabel('Probability Density')
+
+sTitle = f'Histogram {len(x)} entries into {num_bins} bins: μ={mu}, σ={sigma}'
+ax.set_title(sTitle)
+
+fig.tight_layout()
+plt.show()
+

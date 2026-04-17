@@ -1,0 +1,36 @@
+import pandas as pd
+
+data = {
+    "Transaction_ID": [1, 2, 3, 4, 5],
+    "Amount": [11000, 2000, -500, 3000, 1500],
+    "Approved": ["Yes", "Yes", "No", "Yes", "Yes"]
+}
+
+df = pd.DataFrame(data)
+print("Original Data:")
+print(df)
+
+df.to_csv("audit_data.csv", index=False)
+
+df = pd.read_csv("audit_data.csv")
+
+print("\nLoaded Data:")
+print(df)
+
+negative_values = df[df["Amount"] < 0]
+
+unapproved = df[df["Approved"] == "No"]
+
+total_amount = df["Amount"].sum()
+
+print("\nTotal Amount:", total_amount)
+
+print("\nNegative Transactions:")
+print(negative_values)
+
+print("\nUnapproved Transactions:")
+print(unapproved)
+
+df.to_csv("audit_report.csv", index=False)
+
+print("\nAudit Completed! Report saved.")

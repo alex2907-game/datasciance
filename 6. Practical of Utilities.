@@ -60,3 +60,35 @@ ax.set_title(sTitle)
 fig.tight_layout()
 plt.show()
 
+
+#B. Averaging of Data
+import pandas as pd
+from google.colab import files
+data = {
+    "Category": ["A","A","A","B","B","C","C"],
+    "Value1": [10,20,30,40,50,60,70],
+    "Value2": [20,30,40,50,60,70,80],
+    "Value3": [30,40,50,60,70,80,90]
+}
+
+df = pd.DataFrame(data)
+df.to_csv("IP_DATA_CORE.csv", index=False)
+print("Sample CSV created!")
+
+# Load dataset
+df = pd.read_csv("IP_DATA_CORE.csv")
+
+# Data reduction
+if "Category" in df.columns:
+    df_reduced = df.groupby("Category").mean()
+else:
+    df_reduced = df.mean(numeric_only=True).to_frame().T
+
+# Save file
+df_reduced.to_csv("data_reduced.csv", index=True)
+
+print("Data reduction complete!")
+
+# Download (Colab only)
+from google.colab import files
+files.download("data_reduced.csv")
